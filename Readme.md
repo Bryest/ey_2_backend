@@ -24,19 +24,19 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
 
 ## Endpoints
 ### Auth
-|Enpoint| Work|
-|---|---|
-|Login|Yes|
+|Enpoint| Work|Endpoint|
+|---|---|---|
+|Login|Yes|https://localhost:7062/api/Auth/login|
 
 ### Supplier
-|Enpoint| Work|
-|---|---|
-|GetAll|Yes|
-|GetById|Yes|
-|Post|Yes|
-|Put|Yes|
-|Delete|Yes|
-|Screening|Yes|
+|Enpoint| Work|endpoint|
+|---|---|---|
+|GetAll|Yes|https://localhost:7062/api/Supplier|
+|GetById|Yes|https://localhost:7062/api/Supplier/{id}|
+|Post|Yes|https://localhost:7062/api/Supplier|
+|Put|Yes|https://localhost:7062/api/Supplier/{id}|
+|Delete|Yes|https://localhost:7062/api/Supplier/{id}|
+|Screening|Yes|https://localhost:7062/api/Supplier/{id}/screening|
 
 1. Post works! It needs email and phone Validation.
 

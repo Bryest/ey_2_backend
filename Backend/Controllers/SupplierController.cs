@@ -64,7 +64,7 @@ namespace Backend.Controllers
             return Ok(new { supplier, Message = "Supplier created succesfully" });
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateSupplier(Guid id, [FromBody] SupplierDto supplier)
         {
             if (!ModelState.IsValid)
@@ -95,7 +95,7 @@ namespace Backend.Controllers
             return Ok(new { existingSupplier.Id, Message = "Supplier updated succesfully" });
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveSupplier(Guid id)
         {
             await _supplierService.DeleteSupplierAsync(id);

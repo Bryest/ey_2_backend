@@ -48,7 +48,7 @@ namespace Backend.Controllers
             var supplier = new Supplier
             {
                 Id = Guid.NewGuid(),
-                BusinessName= newSupplier.BusinessName,
+                BusinessName = newSupplier.BusinessName,
                 TradeName = newSupplier.TradeName,
                 TaxId = newSupplier.PhoneNumber,
                 PhoneNumber = newSupplier.PhoneNumber,
@@ -103,7 +103,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("{id}/screening")]
-        public async Task<IActionResult> ScreenSupplier(Guid id, [FromQuery] string[] sources)
+        public async Task<IActionResult> ScreenSupplier(Guid id)
         {
             var supplier = await _supplierService.GetSupplierByIdAsync(id);
             if (supplier == null)
@@ -111,36 +111,21 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            var screeningResults = await PerformScreeningAsync(supplier, sources);
+            var screeningResults = GetHighRiskSuppliers().FirstOrDefault(s=>s.Id==id);
 
-            return Ok(screeningResults);
+            if (screeningResults == null)
+                return Ok(new { Message = "Supplier not found in high-risk list", screeningResults });
+
+            return Ok(new { Message = "Supplier found in high-risk list", screeningResults});
         }
 
-        private async Task<ScreeningResult> PerformScreeningAsync(Supplier supplier, string[] sources)
+        private List<SupplierHighRisk> GetHighRiskSuppliers()
         {
-            var screeningResult = new ScreeningResult
+            return new List<SupplierHighRisk>
             {
-                SupplierId = supplier.Id,
-                Results = new List<ScreeningMatch>
-                {
-                    new ScreeningMatch { Source = "OFAC", MatchDetails = "Match found in OFAC list" },
-                    new ScreeningMatch { Source = "World Bank", MatchDetails = "Match found in World Bank list" }
-                }
+                new SupplierHighRisk { Id = new Guid("11A1C681-ACD4-446A-9272-61165DD04FC2"), BusinessName = "Tech Innovators", TaxId = "12345678901" },
+                new SupplierHighRisk { Id = new Guid("05C099D4-97A5-4DB3-85F9-F82CDE962C26"), BusinessName = "Green Solutions", TaxId = "12345678901"}
             };
-
-            return await Task.FromResult(screeningResult);
         }
-    }
-
-    public class ScreeningResult
-    {
-        public Guid SupplierId { get; set; }
-        public List<ScreeningMatch> Results { get; set; }
-    }
-
-    public class ScreeningMatch
-    {
-        public string Source { get; set; }
-        public string MatchDetails { get; set; }
     }
 }

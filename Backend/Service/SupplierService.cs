@@ -26,11 +26,11 @@ namespace Backend.Service
         {
             try
             {
-                _supplierRepository.AddSupplierAsync(supplier);
+                await _supplierRepository.AddSupplierAsync(supplier);
             }
             catch (Exception ex)
             {
-
+                throw new Exception($"An error ocurred while Create supplier: {ex.Message}");
             }
         }
         public async Task UpdateSupplierAsync(Supplier supplier)
@@ -49,7 +49,7 @@ namespace Backend.Service
         {
             try
             {
-                _supplierRepository?.DeleteSupplierAsync(id);
+                await _supplierRepository.DeleteSupplierAsync(id);
 
             }catch( Exception ex)
             {

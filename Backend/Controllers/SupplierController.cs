@@ -1,4 +1,5 @@
-﻿using Backend.Model;
+﻿using Backend.Dto;
+using Backend.Model;
 using Backend.Repository;
 using Backend.Service;
 using Microsoft.AspNetCore.Authorization;
@@ -37,26 +38,36 @@ namespace Backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSupplier([FromBody] Supplier supplier)
+        public async Task<IActionResult> CreateSupplier([FromBody] SupplierDto newSupplier)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
             }
 
-
-
-            supplier.Id = Guid.NewGuid();
-            supplier.LastEdited = DateTime.Now;
+            var supplier = new Supplier
+            {
+                Id = Guid.NewGuid(),
+                BusinessName= newSupplier.BusinessName,
+                TradeName = newSupplier.TradeName,
+                TaxId = newSupplier.PhoneNumber,
+                PhoneNumber = newSupplier.PhoneNumber,
+                Email = newSupplier.Email,
+                Website = newSupplier.Website,
+                PhysicalAddress = newSupplier.PhysicalAddress,
+                Country = newSupplier.Country,
+                AnnualBilling = newSupplier.AnnualBilling,
+                LastEdited = DateTime.Now
+            };
 
             await _supplierService.AddSupplierAsync(supplier);
             return Ok(new { supplier, Message = "Supplier created succesfully" });
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateSupplier(Guid id, [FromBody] Supplier supplier)
+        public async Task<IActionResult> UpdateSupplier(Guid id, [FromBody] SupplierDto supplier)
         {
-            if (id != supplier.Id || !ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
             }
@@ -68,7 +79,7 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            existingSupplier.BussinessName = supplier.BussinessName;
+            existingSupplier.BusinessName = supplier.BusinessName;
             existingSupplier.TradeName = supplier.TradeName;
             existingSupplier.TaxId = supplier.TaxId;
             existingSupplier.PhoneNumber = supplier.PhoneNumber;
@@ -80,8 +91,8 @@ namespace Backend.Controllers
 
             existingSupplier.LastEdited = DateTime.UtcNow;
 
-            await _supplierService.UpdateSupplierAsync(supplier);
-            return Ok(new { supplier.Id, Message = "Supplier updated succesfully" });
+            await _supplierService.UpdateSupplierAsync(existingSupplier);
+            return Ok(new { existingSupplier.Id, Message = "Supplier updated succesfully" });
         }
 
         [HttpDelete]

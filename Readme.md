@@ -18,6 +18,10 @@ VALUES ('testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2G
 ```
 
 
+### Resources
+1. To hash a password
+https://bcrypt.online/
+
 
 
 

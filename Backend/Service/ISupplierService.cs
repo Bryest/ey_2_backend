@@ -1,8 +1,8 @@
 ﻿using Backend.Model;
 
-namespace Backend.Repository
+namespace Backend.Service
 {
-    public interface ISupplierRepository
+    public interface ISupplierService
     {
         Task<IEnumerable<Supplier>> GetAllSuppliersByOrderLastEditedAsync();
         Task<Supplier> GetSupplierByIdAsync(Guid id);

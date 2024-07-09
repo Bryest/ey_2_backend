@@ -13,7 +13,7 @@ namespace Backend.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Supplier>> GetSuppliersAsync()
+        public async Task<IEnumerable<Supplier>> GetAllSuppliersByOrderLastEditedAsync()
         {
             return await _context.Suppliers.OrderBy(s => s.LastEdited).ToListAsync();
         }

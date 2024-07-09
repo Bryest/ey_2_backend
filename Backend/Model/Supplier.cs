@@ -12,6 +12,6 @@
         public string PhysicalAddress { get; set; }
         public string Country{ get; set; }
         public decimal AnnualBilling { get; set; }
-        public DateTime LastEdited{ get; set; }
+        public DateTime LastEdited { get; set; }
     }
 }

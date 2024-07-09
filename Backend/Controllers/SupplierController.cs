@@ -44,6 +44,8 @@ namespace Backend.Controllers
                 return BadRequest(ModelState.Values.SelectMany(v => v.Errors));
             }
 
+
+
             supplier.Id = Guid.NewGuid();
             supplier.LastEdited = DateTime.Now;
 
@@ -89,8 +91,8 @@ namespace Backend.Controllers
             return Ok(new { Message = $"Supplier with ${id} removed succesfully" });
         }
 
-        [HttpPost("{id}/screening")]
-        public async Task<IActionResult> ScreenSupplier(Guid id, [FromBody] ScreeningRequest screeningRequest)
+        [HttpGet("{id}/screening")]
+        public async Task<IActionResult> ScreenSupplier(Guid id, [FromQuery] string[] sources)
         {
             var supplier = await _supplierService.GetSupplierByIdAsync(id);
             if (supplier == null)
@@ -98,16 +100,13 @@ namespace Backend.Controllers
                 return NotFound();
             }
 
-            var screeningResults = await PerformScreeningAsync(supplier, screeningRequest.Sources);
+            var screeningResults = await PerformScreeningAsync(supplier, sources);
 
             return Ok(screeningResults);
         }
 
         private async Task<ScreeningResult> PerformScreeningAsync(Supplier supplier, string[] sources)
         {
-            // Implementar la lógica para realizar el cruce con las listas de alto riesgo
-
-            // Ejemplo simulado de resultado de screening
             var screeningResult = new ScreeningResult
             {
                 SupplierId = supplier.Id,
@@ -120,11 +119,6 @@ namespace Backend.Controllers
 
             return await Task.FromResult(screeningResult);
         }
-    }
-
-    public class ScreeningRequest
-    {
-        public string[] Sources { get; set; }
     }
 
     public class ScreeningResult

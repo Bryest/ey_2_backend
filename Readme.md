@@ -36,7 +36,7 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
 |Post|Yes|
 |Put|Yes|
 |Delete|Yes|
-|Screening|ToTest|
+|Screening|Yes|
 
 1. Post works! It needs email and phone Validation.
 
@@ -55,7 +55,7 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
   "lastEdited": "2024-07-09T16:09:27.112Z"
 }
 ```
-2. Put works all the fields are optional
+2. Put works! All the fields are optional.
 
 ```json
 {
@@ -70,8 +70,17 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
   "annualBilling": 0
 }
 ```
-
-
+3. Screening works! These are the Suppliers on High Risk
+```
+Id = new Guid("11A1C681-ACD4-446A-9272-61165DD04FC2"),
+BusinessName = "Tech Innovators",
+TaxId = "12345678901" ,
+```
+```
+Id = new Guid("05C099D4-97A5-4DB3-85F9-F82CDE962C26"),
+BusinessName = "Green Solutions", 
+TaxId = "12345678901"
+```
 
 ### Resources
 1. To hash a password

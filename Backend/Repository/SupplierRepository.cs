@@ -15,7 +15,7 @@ namespace Backend.Repository
 
         public async Task<IEnumerable<Supplier>> GetAllSuppliersByOrderLastEditedAsync()
         {
-            return await _context.Suppliers.OrderBy(s => s.LastEdited).ToListAsync();
+            return await _context.Suppliers.OrderByDescending(s => s.LastEdited).ToListAsync();
         }
 
         public async Task<Supplier> GetSupplierByIdAsync(Guid id)

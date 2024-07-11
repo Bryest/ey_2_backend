@@ -1,11 +1,41 @@
-# SQL Queries
+# Supplier Diligence
 
+## SQL Queries
 
+```SQL
 USE SupplierDiligenceDb;
 
-3. When receive the token of the Login. To execute the Supplier Endpoints add the token in the Lock in Swagger and type "Bearer [token]" in one line. Example:
+INSERT INTO [User] (Id, Username, PasswordHash) 
+VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2Ghe');
+
+INSERT INTO Suppliers (Id, BusinessName, TradeName, TaxId, PhoneNumber, Email, Website, PhysicalAddress, Country, AnnualBilling, LastEdited)
+VALUES
+    (NEWID(), 'Tech Innovators', 'Tech Innovators Inc.', '12345678901', '983456-7890', 'contact@techinnovators.co.in', 'https://techinnovators.co.in/', '123 Innovation Drive, Tech City', 'India', 5000000.00, GETDATE()),
+    (NEWID(), 'Green Solutions', 'Green Solutions Ltd.', '23456789012', '974-567-8901', 'info@greensolutions.eu', 'https://greensolutions.eu/', '456 Eco Street, Green City', 'Germany', 7500000.00, GETDATE()),
+    (NEWID(), 'Global Trade Co.', 'Global Trade Co.', '34567890123', '9656789012', 'support@globaltradeco.store', 'https://www.globaltradeco.store/', '789 Trade Avenue, Commerce City', 'USA', 10000000.00, GETDATE()),
+    (NEWID(), 'Innovative Manufacturing', 'Innovative Mfg. Corp.', '45345678301', '946789123', 'sales@innovativemfg.ca', 'https://www.innovativemfg.ca/', '101 Manufacturing Road, Industry City', 'Canada', 8500000.00, GETDATE()),
+    (NEWID(), 'Eco Systems', 'Eco Systems Inc.', '56789012345', '9478901234', 'admin@ecos.com', 'https://www.ecos.com/', '202 Sustainability Blvd, Eco City', 'UK', 9500000.00, GETDATE());
 ```
-Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdHVzZXIyIiwiZXhwIjoxNzIwNjIwNDkzfQ.AM6RgBQekPo7TewvpkBPZovaxItrbOldnw6B_B1WdD0
+
+
+```SQL
+SELECT TOP (1000) [Id]
+      ,[Username]
+      ,[PasswordHash]
+  FROM [SupplierDiligenceDb].[dbo].[User]
+
+SELECT TOP (1000) [Id]
+      ,[BusinessName]
+      ,[TradeName]
+      ,[TaxId]
+      ,[PhoneNumber]
+      ,[Email]
+      ,[Website]
+      ,[PhysicalAddress]
+      ,[Country]
+      ,[AnnualBilling]
+      ,[LastEdited]
+  FROM [SupplierDiligenceDb].[dbo].[Suppliers]
 ```
 
 ## Endpoints
@@ -27,6 +57,11 @@ VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vI
   "username": "testuser2",
   "password": "test@123"
 }
+```
+
+3. When receive the token of the Login. To execute the Supplier Endpoints add the token in the Lock in Swagger and type "Bearer [token]" in one line and Authorize in the Swagger. Example:
+```
+Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoidGVzdHVzZXIyIiwiZXhwIjoxNzIwNjIwNDkzfQ.AM6RgBQekPo7TewvpkBPZovaxItrbOldnw6B_B1WdD0
 ```
 
 

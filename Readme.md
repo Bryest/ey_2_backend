@@ -76,7 +76,7 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
 http://127.0.0.1:5000/search?entity_name=New Entity Limited
 `
 * Returns
-```
+```json
 {
     "hits": 100,
     "rows": [

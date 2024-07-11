@@ -4,19 +4,23 @@ using Backend.Repository;
 using Backend.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace Backend.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase
     {
         private readonly ISupplierService _supplierService;
+        private readonly HttpClient _httpClient;
+        private readonly ILogger<SupplierController> _logger;
 
-        public SupplierController(ISupplierService supplierService)
+        public SupplierController(ISupplierService supplierService, HttpClient httpClient, ILogger<SupplierController> logger)
         {
             _supplierService = supplierService;
+            _httpClient = httpClient;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -97,35 +101,34 @@ namespace Backend.Controllers
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveSupplier(Guid id)
-        {
+        {http://127.0.0.1:5000/search?entity_name=a
             await _supplierService.DeleteSupplierAsync(id);
             return Ok(new { Message = $"Supplier with ${id} removed succesfully" });
         }
 
-        [HttpGet("{id}/screening")]
-        public async Task<IActionResult> ScreenSupplier(Guid id)
+    
+        [HttpGet("screening/{entity_name}")]
+        public async Task<IActionResult> GetEntityData(string entity_name)
         {
-            var supplier = await _supplierService.GetSupplierByIdAsync(id);
-            if (supplier == null)
+            string url = $"http://127.0.0.1:5000/search?entity_name={entity_name}";
+
+            try
             {
-                return NotFound();
+                var response = await _httpClient.GetStringAsync(url);
+
+                if (string.IsNullOrEmpty(response))
+                {
+                    return NotFound($"No data found for the specified entity at {url}.");
+                }
+
+                return Content(response, "application/json");
             }
-
-            var screeningResults = GetHighRiskSuppliers().FirstOrDefault(s=>s.Id==id);
-
-            if (screeningResults == null)
-                return Ok(new { Message = "Supplier not found in high-risk list", screeningResults });
-
-            return Ok(new { Message = "Supplier found in high-risk list", screeningResults});
-        }
-
-        private List<SupplierHighRisk> GetHighRiskSuppliers()
-        {
-            return new List<SupplierHighRisk>
+            catch (HttpRequestException)
             {
-                new SupplierHighRisk { Id = new Guid("11A1C681-ACD4-446A-9272-61165DD04FC2"), BusinessName = "Tech Innovators", TaxId = "12345678901" },
-                new SupplierHighRisk { Id = new Guid("05C099D4-97A5-4DB3-85F9-F82CDE962C26"), BusinessName = "Green Solutions", TaxId = "12345678901"}
-            };
+                return StatusCode(500, "Error fetching data from the external service.");
+            }
         }
     }
 }
+
+

@@ -36,7 +36,7 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
 |Post|Yes|https://localhost:7062/api/Supplier|
 |Put|Yes|https://localhost:7062/api/Supplier/{id}|
 |Delete|Yes|https://localhost:7062/api/Supplier/{id}|
-|Screening|Yes|https://localhost:7062/api/Supplier/{id}/screening|
+|Screening|Yes|http://127.0.0.1:5000/search?entity_name={entity_name}|
 
 1. Post works! It needs email and phone Validation.
 
@@ -71,16 +71,36 @@ Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoY
 }
 ```
 3. Screening works! These are the Suppliers on High Risk
+* Example <br>
+`
+http://127.0.0.1:5000/search?entity_name=New Entity Limited
+`
+* Returns
 ```
-Id = new Guid("11A1C681-ACD4-446A-9272-61165DD04FC2"),
-BusinessName = "Tech Innovators",
-TaxId = "12345678901" ,
+{
+    "hits": 100,
+    "rows": [
+        {
+            "DataFrom": "Offshore Leaks",
+            "Entity": "New Entity Limited",
+            "Jurisdiction": "British Virgin Islands",
+            "LinkedTo": "British Virgin Islands"
+        },
+        {
+            "DataFrom": "Offshore Leaks",
+            "Entity": "TOPWELL ENTITY LIMITED",
+            "Jurisdiction": "British Virgin Islands",
+            "LinkedTo": "British Virgin Islands"
+        },
+        {
+            "DataFrom": "Bahamas Leaks",
+            "Entity": "SWIFT ENTITY LIMITED",
+            "Jurisdiction": "Bahamas",
+            "LinkedTo": ""
+        },
+        {
 ```
-```
-Id = new Guid("05C099D4-97A5-4DB3-85F9-F82CDE962C26"),
-BusinessName = "Green Solutions", 
-TaxId = "12345678901"
-```
+
 
 ### Resources
 1. To hash a password

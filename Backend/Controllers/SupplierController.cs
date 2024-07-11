@@ -107,7 +107,7 @@ namespace Backend.Controllers
         }
 
     
-        [HttpGet("screening/{entity_name}")]
+        [HttpGet("screening/offshoreleaks/{entity_name}")]
         public async Task<IActionResult> GetEntityData(string entity_name)
         {
             string url = $"http://127.0.0.1:5000/search?entity_name={entity_name}";

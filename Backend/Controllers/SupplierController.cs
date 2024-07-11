@@ -8,6 +8,7 @@ using System.Text.Json;
 
 namespace Backend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase

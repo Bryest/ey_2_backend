@@ -1,5 +1,6 @@
 # Supplier Diligence
 
+
 ## SQL Queries
 
 ```SQL
@@ -8,10 +9,13 @@ USE SupplierDiligenceDb;
 INSERT INTO [User] (Id, Username, PasswordHash) 
 VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2Ghe');
 
+INSERT INTO [User] (Id, Username, PasswordHash) 
+VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2Ghe');
+
 INSERT INTO Suppliers (Id, BusinessName, TradeName, TaxId, PhoneNumber, Email, Website, PhysicalAddress, Country, AnnualBilling, LastEdited)
 VALUES
-    (NEWID(), 'Tech Innovators', 'Tech Innovators Inc.', '12345678901', '983456-7890', 'contact@techinnovators.co.in', 'https://techinnovators.co.in/', '123 Innovation Drive, Tech City', 'India', 5000000.00, GETDATE()),
-    (NEWID(), 'Green Solutions', 'Green Solutions Ltd.', '23456789012', '974-567-8901', 'info@greensolutions.eu', 'https://greensolutions.eu/', '456 Eco Street, Green City', 'Germany', 7500000.00, GETDATE()),
+    (NEWID(), 'Tech Innovators', 'Tech Innovators Inc.', '12345678901', '984567890', 'contact@techinnovators.co.in', 'https://techinnovators.co.in/', '123 Innovation Drive, Tech City', 'India', 5000000.00, GETDATE()),
+    (NEWID(), 'Green Solutions', 'Green Solutions Ltd.', '23456789012', '9745678901', 'info@greensolutions.eu', 'https://greensolutions.eu/', '456 Eco Street, Green City', 'Germany', 7500000.00, GETDATE()),
     (NEWID(), 'Global Trade Co.', 'Global Trade Co.', '34567890123', '9656789012', 'support@globaltradeco.store', 'https://www.globaltradeco.store/', '789 Trade Avenue, Commerce City', 'USA', 10000000.00, GETDATE()),
     (NEWID(), 'Innovative Manufacturing', 'Innovative Mfg. Corp.', '45345678301', '946789123', 'sales@innovativemfg.ca', 'https://www.innovativemfg.ca/', '101 Manufacturing Road, Industry City', 'Canada', 8500000.00, GETDATE()),
     (NEWID(), 'Eco Systems', 'Eco Systems Inc.', '56789012345', '9478901234', 'admin@ecos.com', 'https://www.ecos.com/', '202 Sustainability Blvd, Eco City', 'UK', 9500000.00, GETDATE());

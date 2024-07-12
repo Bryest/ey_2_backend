@@ -15,8 +15,15 @@ VALUES
     (NEWID(), 'Green Solutions', 'Green Solutions Ltd.', '23456789012', '9745678901', 'info@greensolutions.eu', 'https://greensolutions.eu/', '456 Eco Street, Green City', 'Germany', 7500000.00, GETDATE()),
     (NEWID(), 'Global Trade Co.', 'Global Trade Co.', '34567890123', '9656789012', 'support@globaltradeco.store', 'https://www.globaltradeco.store/', '789 Trade Avenue, Commerce City', 'USA', 10000000.00, GETDATE()),
     (NEWID(), 'Innovative Manufacturing', 'Innovative Mfg. Corp.', '45345678301', '946789123', 'sales@innovativemfg.ca', 'https://www.innovativemfg.ca/', '101 Manufacturing Road, Industry City', 'Canada', 8500000.00, GETDATE()),
-    (NEWID(), 'Eco Systems', 'Eco Systems Inc.', '56789012345', '9478901234', 'admin@ecos.com', 'https://www.ecos.com/', '202 Sustainability Blvd, Eco City', 'UK', 9500000.00, GETDATE());
-```
+    (NEWID(), 'Eco Systems', 'Eco Systems Inc.', '56789012345', '9478901234', 'admin@ecos.com', 'https://www.ecos.com/', '202 Sustainability Blvd, Eco City', 'UK', 9500000.00, GETDATE()),
+	(NEWID(), 'Solar Energy Corp', 'Solar Energy Corp.', '67890123456', '9876543210', 'contact@solarenergycorp.com', 'https://www.solarenergycorp.com/', '303 Solar Way, Sun City', 'Australia', 12000000.00, GETDATE()),
+	(NEWID(), 'Blue Ocean Tech', 'Blue Ocean Technologies Ltd.', '78901234567', '9567890123', 'info@blueoceantech.io', 'https://www.blueoceantech.io/', '404 Ocean Drive, Marine City', 'USA', 6200000.00, GETDATE()),
+	(NEWID(), 'Smart Agriculture', 'Smart Agriculture Inc.', '89012345678', '9678901234', 'support@smartagriculture.org', 'https://www.smartagriculture.org/', '505 Agro Lane, Farming City', 'Brazil', 5300000.00, GETDATE()),
+	(NEWID(), 'Clean Energy Solutions', 'Clean Energy Solutions Ltd.', '90123456789', '9789012345', 'contact@cleanenergysolutions.com', 'https://www.cleanenergysolutions.com/', '606 Renewable Road, Energy City', 'Denmark', 9800000.00, GETDATE()),
+	(NEWID(), 'Urban Tech Innovators', 'Urban Tech Innovators Inc.', '11234567890', '9890123456', 'info@urbantechinnovators.com', 'https://www.urbantechinnovators.com/', '707 Cityscape Blvd, Urban City', 'Japan', 7100000.00, GETDATE()),
+	(NEWID(), 'Future Mobility', 'Future Mobility Corp.', '12345678912', '9901234567', 'support@futuremobility.co', 'https://www.futuremobility.co/', '808 Transport Ave, Mobility City', 'Netherlands', 8900000.00, GETDATE()),
+	(NEWID(), 'Green Building Solutions', 'Green Building Solutions Ltd.', '23456789023', '9512345678', 'sales@greenbuildingsolutions.com', 'https://www.greenbuildingsolutions.com/', '909 Construction Rd, Build City', 'Singapore', 7500000.00, GETDATE())
+	```
 
 
 ```SQL

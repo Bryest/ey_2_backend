@@ -23,7 +23,7 @@ VALUES
 	(NEWID(), 'Urban Tech Innovators', 'Urban Tech Innovators Inc.', '11234567890', '9890123456', 'info@urbantechinnovators.com', 'https://www.urbantechinnovators.com/', '707 Cityscape Blvd, Urban City', 'Japan', 7100000.00, GETDATE()),
 	(NEWID(), 'Future Mobility', 'Future Mobility Corp.', '12345678912', '9901234567', 'support@futuremobility.co', 'https://www.futuremobility.co/', '808 Transport Ave, Mobility City', 'Netherlands', 8900000.00, GETDATE()),
 	(NEWID(), 'Green Building Solutions', 'Green Building Solutions Ltd.', '23456789023', '9512345678', 'sales@greenbuildingsolutions.com', 'https://www.greenbuildingsolutions.com/', '909 Construction Rd, Build City', 'Singapore', 7500000.00, GETDATE())
-	```
+```
 
 
 ```SQL

@@ -9,9 +9,6 @@ USE SupplierDiligenceDb;
 INSERT INTO [User] (Id, Username, PasswordHash) 
 VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2Ghe');
 
-INSERT INTO [User] (Id, Username, PasswordHash) 
-VALUES ('5daa4203-9433-46a2-a5bb-d3155ebd542c','testuser2', '$2y$10$nqUq7pfBf8vIKRwsJrwDu.arfRCQBkV0ROn5uw36HNJ4hNl3/2Ghe');
-
 INSERT INTO Suppliers (Id, BusinessName, TradeName, TaxId, PhoneNumber, Email, Website, PhysicalAddress, Country, AnnualBilling, LastEdited)
 VALUES
     (NEWID(), 'Tech Innovators', 'Tech Innovators Inc.', '12345678901', '984567890', 'contact@techinnovators.co.in', 'https://techinnovators.co.in/', '123 Innovation Drive, Tech City', 'India', 5000000.00, GETDATE()),
